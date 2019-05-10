@@ -34,15 +34,23 @@ function turnOffRangeMovement() {
     this.removeEventListener('mousemove', handleRangeUpdate);
 }
 
+function handleProgress() {
+    const percent = (video.currentTime / video.duration) * 100;
+    progressBar.style.flexBasis = `${percent}%`;
+}
+
 // add event handlers
 toggle.addEventListener('click', togglePlay);
 
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updatePlayButton);
 video.addEventListener('pause', updatePlayButton);
+video.addEventListener('timeupdate', handleProgress);
 
 skipButtons.forEach(button => button.addEventListener('click', skip));
 
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousedown', turnOnRangeMovement));
 ranges.forEach(range => range.addEventListener('mouseup', turnOffRangeMovement));
+
+progress.addEventListener('click', scrub);

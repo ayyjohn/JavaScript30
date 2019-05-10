@@ -74,6 +74,7 @@
     console.count('alec');
 
     // timing
+    // displays how long, in ms, starting from the time call until the timeEnd call
     console.time('fetching data');
     fetch('https://api.github.com/users/ayyjohn')
       .then(data => data.json())

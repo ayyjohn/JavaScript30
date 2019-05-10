@@ -61,8 +61,26 @@
       
     })
     // counting
+    // logs the number of times that console.count has been called with those args
+    console.count('alec');
+    console.count('alec');
+    console.count('alec');
+    console.count('john');
+    console.count('john');
+    console.count('alec');
+    console.count('alec');
+    console.count('john');
+    console.count('alec');
+    console.count('alec');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/ayyjohn')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
 
   </script>
 </body>
